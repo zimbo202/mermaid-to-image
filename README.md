@@ -159,19 +159,48 @@ export PUPPETEER_EXECUTABLE_PATH=/path/to/chrome
 
 ## 使用方法
 
-### 处理单个 Markdown 文件
+### 作为 Claude Code Skill 使用（推荐）
+
+本工具已封装为 Claude Code Skill。安装后，只需在 Claude Code 中输入：
+
+```
+/mermaid-to-svg ./doc.md
+```
+
+或处理整个目录：
+
+```
+/mermaid-to-svg ./docs
+```
+
+### 作为独立脚本使用
+
+#### 处理单个 Markdown 文件
 
 ```bash
 python3 md_mermaid_to_svg.py ./doc.md
 ```
 
-### 处理目录下所有 Markdown 文件
+#### 处理目录下所有 Markdown 文件
 
 ```bash
 python3 md_mermaid_to_svg.py ./docs
 ```
 
 该命令会递归处理 `./docs` 目录下的所有 `.md` 文件。
+
+### Skill 安装
+
+Skill 文件位于 `.claude/skills/mermaid-to-svg/` 目录。要安装到 Claude Code：
+
+```bash
+# 方法1：使用 skill 目录路径
+claude skill install .claude/skills/mermaid-to-svg/
+
+# 方法2：打包后安装
+claude skill package .claude/skills/mermaid-to-svg/
+claude skill install mermaid-to-svg.skill
+```
 
 ## 文件存储结构
 
